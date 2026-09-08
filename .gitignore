@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Uploaded and locally retained forensic evidence.
+data/*
+!data/.gitkeep
+
+# Local editor and OS files.
+.vscode/
+.DS_Store
+Thumbs.db
