@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">VolViewer</title>
+  <desc id="desc">A forensic lens over a memory grid</desc>
+  <rect width="64" height="64" rx="14" fill="#192825"/>
+  <path d="M15 18h22M15 26h14M15 34h18M15 42h10" fill="none" stroke="#9be2c2" stroke-linecap="round" stroke-width="4"/>
+  <circle cx="42" cy="36" r="12" fill="#267557" stroke="#edf8f0" stroke-width="3"/>
+  <path d="m51 45 7 7" stroke="#e8b96d" stroke-linecap="round" stroke-width="5"/>
+</svg>

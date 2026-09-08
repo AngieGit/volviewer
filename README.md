@@ -25,6 +25,8 @@ VolViewer is intended for local forensic analysis. The Python server binds to `1
 
 ## Installation
 
+Installing VolViewer also installs the pinned Volatility 3 dependency. From a cloned checkout:
+
 Clone the repository and create a virtual environment:
 
 ```powershell
@@ -33,7 +35,7 @@ cd VolViewer
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install .
 ```
 
 On macOS or Linux, use the equivalent commands:
@@ -44,8 +46,16 @@ cd VolViewer
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install .
 ```
+
+To install directly from GitHub:
+
+```bash
+python -m pip install "git+https://github.com/angiegit/VolViewer.git"
+```
+
+For editable development installs, use `python -m pip install -e .`. The `requirements.txt` file also points to the local package and can be used with `python -m pip install -r requirements.txt`.
 
 ## Run
 
@@ -95,11 +105,15 @@ py server.py
 4. Search, sort, and page through the returned rows. Use **Timeline view** for timestamped results.
 5. Use **Export PDF** to open the browser print dialog and save the current view with an examination cover page.
 
-The initial catalog contains `windows.info.Info`, process, network, registry, command-line, `windows.malfind.Malfind`, `windows.suspicious.SuspiciousThreads`, and `timeliner.Timeliner`. Plugin availability still depends on the installed Volatility version and the target image.
+The initial catalog contains `windows.info.Info`, process, network, registry, command-line, `windows.malfind.Malfind`, `windows.suspicious_threads.SuspiciousThreads`, and `timeliner.Timeliner`. These identifiers were checked against the Volatility CLI help for the pinned framework version. Plugin availability still depends on the installed Volatility version and the target image.
 
 ## Data and privacy
 
-Uploaded images are written to `data/` using a generated job identifier. They are not removed when a job is cancelled, so delete evidence files from `data/` when they are no longer needed. Treat this directory as sensitive forensic material and do not expose the server beyond the local machine without adding authentication, access controls, and a deployment-specific security review.
+Uploaded images are written to `data/` using a generated job identifier. In this workspace, that directory contains the retained memory-image files, typically with `.winddramimage` or `.mddramimage` extensions. These are binary evidence captures, not screenshots or ordinary image files, and may be approximately 1 GB each.
+
+The sidebar's **Saved evidence** history reads this directory and lets you reuse a stored capture for another plugin run or delete it explicitly. Deletion is permanent and is blocked while the image is being analyzed. Results are held in the current browser session; loading a saved capture reruns the selected plugin rather than uploading a second copy.
+
+They are not removed when a job is cancelled, so delete evidence files from **Saved evidence** when they are no longer needed. Treat this directory as sensitive forensic material and do not expose the server beyond the local machine without adding authentication, access controls, and a deployment-specific security review.
 
 VolViewer passes the selected plugin and image path to Volatility and displays its JSON output. It does not modify the source image. Volatility may download or use symbol files depending on its configuration and the image being analyzed.
 
@@ -108,7 +122,10 @@ VolViewer passes the selected plugin and image path to Volatility and displays i
 The browser uses these local endpoints:
 
 - `GET /api/health` - reports engine detection and the upload limit
+- `GET /api/evidence` - lists retained evidence filenames, sizes, and modification dates
 - `POST /api/analyze` - accepts multipart fields `image` and `plugin`
+- `POST /api/analyze-existing` - reruns a plugin against a stored evidence filename
+- `DELETE /api/evidence/<filename>` - permanently deletes a stored evidence file
 - `GET /api/jobs/<id>` - returns queued, running, complete, error, or cancelled job state
 - `DELETE /api/jobs/<id>` - requests cancellation of a running job
 
