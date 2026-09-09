@@ -1,5 +1,10 @@
 # VolViewer
 
+<p align="left">
+  <img src="favicon.svg" alt="VolViewer favicon" width="40" height="40" />
+  <span style="font-size: 2.2em; font-weight: 700; vertical-align: middle; margin-left: 12px;">VolViewer</span>
+</p>
+
 VolViewer is a local web workspace for inspecting memory images with the [Volatility 3](https://github.com/volatilityfoundation/volatility3) framework. It provides a browser interface for uploading an image, running a supported plugin, and reviewing JSON results in a searchable, sortable, paginated table.
 
 VolViewer is intended for local forensic analysis. The Python server binds to `127.0.0.1` by default and does not provide authentication or multi-user access.
