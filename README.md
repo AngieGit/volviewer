@@ -137,3 +137,8 @@ The browser uses these local endpoints:
 The application has no frontend build step or JavaScript package manager. `server.py` serves `index.html`, `app.js`, and `styles.css` directly. Run it from the repository root so the static files and `data/` directory resolve correctly.
 
 The project is currently a preview release. The plugin catalog and result presentation are intentionally focused on the current local workflow; add and verify plugin names against the Volatility version installed in the target environment before relying on them in an investigation.
+
+## Acknowledgements
+
+- [Volatility Foundation](https://github.com/volatilityfoundation/volatility3) for creating and maintaining the Volatility 3 framework that powers the main application.
+- [Anant Shrivastava](https://github.com/anantshri) for the initial guidance and improvements.
