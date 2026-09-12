@@ -11,3 +11,9 @@ Ref. Monappa
 --link the threat level details
 -- pip install (requirements.txt)
 
+Contribution workflow ideas for later:
+-- Add .github/ISSUE_TEMPLATE/bug_report.md with environment, reproduction steps, expected behavior, actual behavior, logs, and sanitized evidence details.
+-- Add .github/ISSUE_TEMPLATE/feature_request.md with the problem, proposed solution, alternatives considered, and expected user benefit.
+-- Add .github/PULL_REQUEST_TEMPLATE.md with change summary, related issue, testing performed, documentation impact, and a sensitive-data checklist.
+-- Add a reminder that memory captures, credentials, tokens, and personally identifiable information must not be attached to issues or pull requests.
+
