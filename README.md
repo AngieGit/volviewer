@@ -7,6 +7,17 @@ VolViewer is a local web workspace for inspecting memory images with the [Volati
 
 VolViewer is intended for local forensic analysis. The Python server binds to `127.0.0.1` by default and does not provide authentication or multi-user access.
 
+## Note on AI Assisted Development
+
+This software was developed with the assistance of **GitHub Copilot** to support classroom discussions and hands-on learning around **Volatility 3 for memory forensics**. These tools helped accelerate development and improve development velocity.
+
+This project is still under active development and should be considered **alpha-level software at best**. It has not yet undergone comprehensive testing, and bugs or unexpected behaviour may still be present.
+
+If you encounter any issues or identify potential flaws, please feel free to submit an **issue or pull request** with your findings and, where possible, proposed fixes.
+
+Following thorough **end-to-end testing and validation**, a stable release will be published.
+
+
 ## Features
 
 - Local browser UI with drag-and-drop memory-image loading
