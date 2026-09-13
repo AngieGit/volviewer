@@ -11,3 +11,6 @@ data/*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Notes for improvement
+"notes to improve.txt"
